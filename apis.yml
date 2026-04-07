@@ -7,10 +7,10 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Safety
-  - Linux
   - Embedded
+  - Linux
   - Linux Foundation
+  - Safety
 created: '2026-03-16'
 modified: '2026-03-16'
 url: >-
@@ -23,10 +23,10 @@ apis:
       Programmatic access to ELISA safety certification tools, functional safety resources, and Linux safety analysis APIs.
     humanURL: https://elisa.tech/resources/
     tags:
-      - Safety
-      - Linux
       - Embedded
+      - Linux
       - Linux Foundation
+      - Safety
     properties:
       - type: Documentation
         url: https://elisa.tech/resources/
