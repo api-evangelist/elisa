@@ -31,6 +31,8 @@ apis:
       - type: Documentation
         url: https://elisa.tech/resources/
 common:
+  - type: DomainSecurity
+    url: security/elisa-domain-security.yml
   - type: Documentation
     name: ELISA Documentation
     description: Official documentation for ELISA.
@@ -39,6 +41,8 @@ common:
     name: ELISA GitHub
     description: Source code and repositories for ELISA.
     url: https://github.com/elisa-tech
+  - type: Blog
+    url: https://elisa.tech/feed/
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
