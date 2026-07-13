@@ -1,0 +1,21 @@
+{
+  "repo": "elisa",
+  "feeds": [
+    {
+      "source": "https://elisa.tech/feed/",
+      "feed_url": "https://elisa.tech/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://github.com/elisa-tech",
+      "feed_url": "https://github.com/elisa-tech",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 19
+}
