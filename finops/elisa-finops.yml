@@ -10,126 +10,35 @@ provider: ELISA
 providerId: elisa
 publisherName: ELISA
 serviceCategory: API
+generated: '2026-08-27'
+method: probed
+source: >-
+  https://elisa.tech/membership/join/, https://elisa.tech/wp-json/, live unauthenticated calls 2026-08-27
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-27'
 tags:
   - Embedded
   - Linux
   - Linux Foundation
   - Safety
   - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the ELISA API surface. Provides a FOCUS-aligned mapping for
-  cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+applicable: false
+description: >-
+  There is no FinOps surface for ELISA, because there is no metered API cost to manage. The API
+  ELISA publishes at https://elisa.tech/wp-json/ is free, anonymous and unmetered — no key, no
+  quota, no per-request charge, no invoice. ELISA's revenue is annual organizational membership
+  dues (see plans/elisa-plans-pricing.yml), a fixed subscription unrelated to API consumption.
+  This file REPLACES a 2026-05-04 bulk-sweep scaffold that asserted a Usage-Based pricing
+  category, monthly USD billing, an invoice issuer, and api_requests / data_egress /
+  compute_seconds meters with cost-per-1K-requests unit economics. ELISA bills none of that.
+  See roadmap#35.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: None
+  metered: false
   billingCurrency: USD
-  chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
-focusColumns:
-  ServiceName: ELISA
-  ServiceCategory: Developer Tools / API
-  ProviderName: ELISA
-  PublisherName: ELISA
-  InvoiceIssuerName: ELISA
-  PricingCategory: Usage-Based
-  PricingUnit: request
-  BillingCurrency: USD
-  ChargeCategory: Usage
-meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: ELISA API
-    baseURL: ''
-    tags:
-      - Embedded
-      - Linux
-      - Linux Foundation
-      - Safety
-    serviceName: ELISA API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+  note: Membership dues are annual and fixed by employee band; they are not an API charge.
+meters: []
+unitEconomics: []
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

@@ -1,0 +1,107 @@
+generated: '2026-08-27'
+method: derived
+source: openapi/elisa-events-calendar-openapi.json + https://developer.wordpress.org/rest-api/
+provider: ELISA
+providerId: elisa
+description: >-
+  Cross-cutting runtime semantics for the machine-readable API surface ELISA serves at
+  https://elisa.tech/wp-json/. Derived from the OpenAPI 3.0.0 document the site publishes at
+  /wp-json/tribe/events/v1/doc and from the WordPress REST API contract that governs the
+  transport, envelope and authentication for every namespace on the host.
+auth:
+  style: none-for-reads
+  detail: >-
+    Every GET in the published contract is anonymous — GET /events returned 200 with real ELISA
+    event data on an unauthenticated request (observed 2026-08-27). Writes (POST/DELETE) require a
+    WordPress user with the matching capability; the /wp-json/ root advertises exactly one
+    authentication scheme, application-passwords, with its authorization endpoint at
+    https://elisa.tech/wp-admin/authorize-application.php.
+  see: authentication/elisa-authentication.yml
+pagination:
+  style: page-number
+  params:
+    - name: page
+      description: The archive page to return.
+    - name: per_page
+      description: The number of events to return on each page.
+  response_fields:
+    - rest_url
+    - next_rest_url
+    - previous_rest_url
+    - total
+    - total_pages
+  note: >-
+    Archive endpoints return the page cursor as absolute URLs (next_rest_url / previous_rest_url)
+    alongside total and total_pages, so an agent can page without reconstructing query strings.
+    An archive with no matches returns 404, not an empty 200 — this is the single most surprising
+    behaviour on the surface and a client that treats 404 as fatal will break on an ordinary
+    empty result.
+filtering:
+  style: query-parameter
+  note: >-
+    GET /events accepts 22 documented query filters — date windows (start_date, end_date,
+    starts_before/after, ends_before/after, strict_dates), full-text search, categories, tags,
+    venue, organizer, featured, status, include, post_parent, ticketed, and three geoloc filters
+    that require the paid Events Calendar Pro add-on and are inert on this deployment.
+field_expansion:
+  supported: false
+  note: Related Venue and Organizer objects are always embedded in full in the Event payload; there is no sparse-fieldset or expand parameter.
+metadata:
+  supported: false
+  note: No customer-defined metadata field on any entity.
+request_id_tracing:
+  supported: false
+  note: No request-id or correlation header is documented or observed on responses.
+versioning:
+  style: path
+  detail: The version is a path segment of the WordPress REST namespace — /wp-json/tribe/events/v1/. The OpenAPI declares info.version 1.0.0.
+  see: lifecycle/elisa-lifecycle.yml
+error_envelope:
+  format: wordpress-rest-error
+  problem_json: false
+  shape: '{ code: <slug>, message: <string>, data: { status: <int> } }'
+  see: errors/elisa-problem-types.yml
+rate_limit_signaling:
+  documented: false
+  headers_observed: []
+  note: >-
+    No rate-limit headers are documented and none were returned on live unauthenticated requests
+    to /wp-json/tribe/events/v1/events (observed 2026-08-27).
+  see: rate-limits/elisa-rate-limits.yml
+idempotency:
+  supported: false
+  idempotency_key_header: null
+  note: >-
+    No idempotency key, no request-deduplication mechanism, nothing matching /idempoten/i in the
+    contract or in the WordPress REST API it is built on. DELETE is naturally idempotent only in
+    the weak sense that a repeat returns 410 Gone rather than re-deleting. POST /events/{id}
+    against an existing ID is an update and is therefore repeat-safe by virtue of being a full
+    replace, but that is a property of the verb, not a stated guarantee. NO Idempotency pointer
+    is emitted for this provider.
+dry_run_mode:
+  supported: false
+  note: No preview, validate-only, or dry-run parameter on any write operation.
+reversibility:
+  state: undocumented
+  grade: null
+  write_surface: true
+  note: >-
+    The contract has a real write surface — 15 write operations (POST and DELETE across events,
+    venues, organizers, categories and tags) — and publishes NO reversal operation and NO window.
+    There is no restore, undelete, untrash or rollback path in the OpenAPI. The underlying
+    WordPress platform moves a deleted post to Trash before permanent deletion, and Trash is
+    emptied on a site-configured schedule (WordPress default 30 days, EMPTY_TRASH_DAYS), but
+    ELISA publishes no statement of its own retention setting and the REST contract exposes no
+    operation to read from or restore out of Trash. A repeat DELETE returns 410 Gone, which tells
+    an agent the delete landed but not whether it can be taken back.
+    Recording this as undocumented rather than as a window: asserting "30 days" here would be
+    quoting a WordPress default that ELISA has never confirmed for this deployment, and an
+    invented window on a destructive operation is the one error in this pipeline that could cost
+    a user real data.
+  reversal_operations: []
+cross_references:
+  errors: errors/elisa-problem-types.yml
+  lifecycle: lifecycle/elisa-lifecycle.yml
+  authentication: authentication/elisa-authentication.yml
+  rate_limits: rate-limits/elisa-rate-limits.yml
+  data_model: data-model/elisa-data-model.yml

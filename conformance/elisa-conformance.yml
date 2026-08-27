@@ -1,0 +1,96 @@
+generated: '2026-08-27'
+method: derived
+source: >-
+  openapi/elisa-events-calendar-openapi.json, well-known/elisa-api-catalog.json,
+  well-known/elisa-robots.txt, https://elisa.tech/wp-json/
+provider: ELISA
+providerId: elisa
+description: >-
+  Cross-cutting and domain-standard conformance for ELISA, asserted from the contract and the
+  documents the host actually serves. Every entry carries the evidence it was read from.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: >-
+      openapi/elisa-events-calendar-openapi.json declares openapi 3.0.0 with 30 operations across
+      14 paths and 8 component schemas, served live at
+      https://elisa.tech/wp-json/tribe/events/v1/doc (HTTP 200, application/json).
+  - id: rfc9727-api-catalog
+    name: RFC 9727 — API Catalog / linkset
+    conforms: true
+    evidence: >-
+      https://elisa.tech/.well-known/api-catalog returns HTTP 200 application/json with a valid
+      linkset — anchor https://elisa.tech/wp-json/, service-desc https://elisa.tech/wp-json/,
+      service-doc https://developer.wordpress.org/rest-api/. Saved verbatim at
+      well-known/elisa-api-catalog.json.
+  - id: llmstxt
+    name: llms.txt
+    conforms: true
+    evidence: https://elisa.tech/llms.txt returns HTTP 200 text/plain, 5,228 bytes. Saved verbatim at llms/elisa-llms.txt.
+  - id: content-signals
+    name: Content Signals (robots.txt AI-usage preferences)
+    conforms: true
+    evidence: >-
+      https://elisa.tech/robots.txt carries "Content-Signal: ai-train=yes, search=yes,
+      ai-input=yes" — an explicit, machine-readable and permissive AI-usage declaration.
+  - id: rfc9457
+    name: RFC 9457 — Problem Details
+    conforms: false
+    evidence: >-
+      No operation declares application/problem+json. Errors use the WordPress REST envelope
+      {code, message, data:{status}} — observed live as
+      {"code":"rest_no_route","message":"No route was found matching the URL and request method.","data":{"status":404}}.
+  - id: oauth2
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource both 404. The only advertised scheme is WordPress application-passwords over HTTP Basic.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Archive operations declare page and per_page parameters and return rest_url, next_rest_url,
+      previous_rest_url, total and total_pages — absolute-URL page cursors, not just offsets.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency key, header or dedup mechanism appears anywhere in the contract or in the WordPress REST API it is built on.
+  - id: scim
+    conforms: false
+    evidence: No SCIM schema URN in any component schema; ELISA exposes no identity-provisioning surface.
+  - id: odata
+    conforms: false
+    evidence: No $metadata endpoint; filtering is plain query parameters, not OData query options.
+domain_standards:
+  note: >-
+    ELISA's market is functional safety for Linux — the standards that matter in it are ISO 26262
+    (automotive), IEC 61508 (industrial), IEC 62304 (medical devices), DO-178C (avionics),
+    EN 50716/50128 (railways) and ISO/PAS 8926. ELISA is one of the most standards-engaged
+    organisations in the catalog: those standards are the entire subject of its working groups,
+    white papers and seminar series.
+    But this pipeline records a DOMAIN-STANDARD CONFORMANCE only when the CONTRACT declares it,
+    and ELISA's published contract is an events/calendar API. There is no functional-safety
+    message type, schema URN or identifier scheme in it, because it is not a functional-safety
+    API — it is the API of the organisation's website. Recording an ISO 26262 conformance here
+    would be reading the company's subject matter into a contract that says nothing about it.
+    This is a reward-only dimension, so an honest absence costs ELISA nothing.
+  declared_in_contract: []
+  organisational_engagement:
+    - standard: ISO 26262
+      surface: https://elisa.tech/community/working-groups/ (Automotive WG)
+    - standard: DO-178C
+      surface: https://elisa.tech/community/working-groups/ (Aerospace WG)
+    - standard: IEC 62304
+      surface: https://github.com/elisa-tech/wg-medical-devices
+    - standard: EN 50716
+      surface: https://elisa.tech/blog/2026/05/13/all-aboard-the-new-railways-sig/ (Railways SIG)
+    - standard: SPDX 3.0.1
+      surface: >-
+        BASIL exports traceability matrices as SPDX Model 3 and validates the export in CI —
+        the one place ELISA ships a machine-readable standard artifact. See
+        https://github.com/elisa-tech/BASIL/releases (v1.8.12).
+compliance_programs:
+  certifications: []
+  note: >-
+    No SOC 2, ISO 27001, PCI, HIPAA or FedRAMP attestation is published, and none would be
+    expected — ELISA is a Linux Foundation collaborative project, not a data processor.
+    NO Compliance pointer is emitted.

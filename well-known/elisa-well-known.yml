@@ -1,0 +1,70 @@
+generated: '2026-08-27'
+method: searched
+source: live probes of every apis.yml + OpenAPI servers[] host on 2026-08-27
+provider: ELISA
+providerId: elisa
+note: >-
+  elisa.tech runs WordPress behind New Relic-instrumented nginx and returns a REAL HTTP 404
+  (the themed 404 page, ~95KB) for unknown paths — it is NOT a soft-200 catch-all, so a 200
+  on this host is trustworthy evidence. Both hits below were verified by content type and by
+  parsing the body, not by status code alone.
+  Note the redirect: the bare paths /llms.txt and /.well-known/api-catalog answer 301 to their
+  trailing-slash forms (/llms.txt/ and /.well-known/api-catalog/), which is a WordPress rewrite
+  artifact. A client that does not follow redirects sees an empty body — worth knowing, because
+  it is the difference between discovering this API surface and concluding there is none.
+hit_count: 2
+hosts:
+  - host: https://elisa.tech
+    documents:
+      - path: /.well-known/api-catalog
+        spec: RFC 9727
+        status: 200
+        content_type: application/json
+        file: elisa-api-catalog.json
+        note: >-
+          A real RFC 9727 linkset. anchor https://elisa.tech/wp-json/ with service-desc
+          https://elisa.tech/wp-json/ and service-doc https://developer.wordpress.org/rest-api/.
+          This document is what led to the machine-readable contract — it is the provider
+          formally declaring where its API description lives.
+      - path: /llms.txt
+        spec: llms.txt
+        status: 200
+        content_type: text/plain
+        file: ../llms/elisa-llms.txt
+        note: 5,228 bytes, provider-published, indexing posts, pages, webinars, venues, organizers, events, series and categories.
+      - path: /robots.txt
+        status: 200
+        content_type: text/plain
+        file: elisa-robots.txt
+        note: >-
+          Carries a Content-Signal directive — "Content-Signal: ai-train=yes, search=yes,
+          ai-input=yes" — an explicit, permissive AI-usage preference published at the edge.
+          This is the consent/identity signal for this provider.
+      - path: /.well-known/security.txt
+        spec: RFC 9116
+        status: 404
+        note: real themed 404, no security.txt published
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        spec: RFC 8414
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        spec: RFC 9728
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        spec: A2A 1.0.0
+        status: 404
+      - path: /.well-known/agent.json
+        spec: A2A pre-0.3
+        status: 404
+      - path: /.well-known/mcp.json
+        status: 404
+      - path: /openapi.json
+        status: 404
+        note: >-
+          404 at the site root — the real OpenAPI is not here. It is served by the WordPress
+          REST namespace at /wp-json/tribe/events/v1/doc, which is why the api-catalog linkset
+          above is the discovery path that actually works.

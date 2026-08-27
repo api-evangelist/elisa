@@ -1,0 +1,53 @@
+generated: '2026-08-27'
+method: searched
+source: https://github.com/elisa-tech/BASIL/releases (via api.github.com/repos/elisa-tech/BASIL/releases)
+provider: ELISA
+providerId: elisa
+scheme: semver
+applies_to: BASIL — ELISA's software quality management and traceability tool, which ships an HTTP REST API
+current_version: v1.8.12
+note: >-
+  ELISA publishes no changelog for the WordPress REST surface on elisa.tech — that contract is
+  versioned only as the /v1/ path segment and carries info.version 1.0.0 with no dated history.
+  The one dated, structured release stream ELISA itself publishes is BASIL's GitHub Releases, and
+  that is what is captured here. The site's /announcements/ and /blog/ are editorial, not a
+  change record, and are wired as Blog rather than ChangeLog.
+entries:
+  - version: v1.8.12
+    date: '2026-05-08'
+    breaking:
+      - PostgreSQL replaces the previous default database
+      - Database models realigned for PostgreSQL
+    additions:
+      - API Traceability Map
+      - Traceability scanner
+      - HTML/PDF export
+      - Document-to-document mapping in traceability
+      - Document fork
+      - New-version-available notification
+      - E2E test for the tmt test-run plugin
+      - SPDX export validation in CI
+    fixes:
+      - SPDX 3.0.1 export
+  - version: v1.8.11a
+    date: '2026-04-24'
+    additions:
+      - AI suggestions extended to Gemini
+      - Custom actions
+      - Comment support extended to indirect work items
+      - Test case source preview for local files
+      - Auto-fix supported in mapping view
+    fixes:
+      - Software Component edit form
+  - version: v1.8.9
+    date: '2026-04-01'
+  - version: v1.8.8
+    date: '2026-03-09'
+  - version: v1.8.6
+    date: '2025-11-18'
+  - version: v1.8.5
+    date: '2025-11-15'
+  - version: v1.8.4
+    date: '2025-10-06'
+  - version: v1.8.3
+    date: '2025-10-03'

@@ -1,0 +1,85 @@
+generated: '2026-08-27'
+method: derived
+source: openapi/elisa-events-calendar-openapi.json
+provider: ELISA
+providerId: elisa
+status: candidate
+description: >-
+  ELISA ships no MCP server. This is a DERIVED candidate tool list showing what one over the
+  published contract would expose. Nothing here is callable today.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: probed
+probe_evidence:
+  - url: https://elisa.tech/wp-json/mcp
+    status: 404
+    body: '{"code":"rest_no_route","message":"No route was found matching the URL and request method."}'
+  - url: https://elisa.tech/wp-json/mcp/mcp-oauth-server
+    status: 404
+    note: >-
+      This is the path the WordPress MCP adapter uses on other WordPress-hosted providers in this
+      catalog (opentravel.org serves a live OAuth-protected MCP server there). ELISA runs
+      WordPress but has not installed that adapter — the namespace is not registered.
+      The 14 namespaces the /wp-json/ root advertises are liquidweb/harbor/v1,
+      tribe/event-aggregator/v1, tribe/events/v1, tribe/views/v2, tec/v2/onboarding, tec/v1,
+      tribe/zapier/v1, tribe/power-automate/v1, objectcache/v1, regenerate-thumbnails/v1, wp/v2,
+      wp-site-health/v1, wp-block-editor/v1 and wp-abilities/v1. None is an MCP surface.
+  - url: https://elisa.tech/.well-known/mcp.json
+    status: 404
+  - url: https://elisa.tech/.well-known/oauth-protected-resource
+    status: 404
+adjacent_signal:
+  note: >-
+    The wp-abilities/v1 namespace IS registered — the WordPress Abilities API, an agent-facing
+    capability registry and the layer the WordPress MCP adapter builds on. Its namespace index is
+    readable anonymously; the abilities listing itself is authenticated
+    (GET /wp-json/wp-abilities/v1/abilities returns 401 rest_forbidden). ELISA is therefore one
+    plugin away from a real MCP surface, which is the most actionable agent-readiness finding for
+    this provider.
+candidate_tools:
+  - name: list_elisa_events
+    description: List ELISA project events, filterable by date window, category, tag, venue, organizer or free-text search.
+    rest: GET /events
+    read_only: true
+  - name: get_elisa_event
+    description: Retrieve a single ELISA event by numeric post ID.
+    rest: GET /events/{id}
+    read_only: true
+  - name: get_elisa_event_by_slug
+    description: Retrieve a single ELISA event by URL slug.
+    rest: GET /events/by-slug/{slug}
+    read_only: true
+  - name: list_elisa_venues
+    description: List venues that host ELISA events.
+    rest: GET /venues
+    read_only: true
+  - name: get_elisa_venue
+    description: Retrieve a venue by ID or slug.
+    rest: GET /venues/{id}
+    read_only: true
+  - name: list_elisa_organizers
+    description: List organizers of ELISA events.
+    rest: GET /organizers
+    read_only: true
+  - name: get_elisa_organizer
+    description: Retrieve an organizer by ID or slug.
+    rest: GET /organizers/{id}
+    read_only: true
+  - name: list_elisa_event_categories
+    description: List the event category taxonomy.
+    rest: GET /categories
+    read_only: true
+  - name: list_elisa_event_tags
+    description: List the event tag taxonomy.
+    rest: GET /tags
+    read_only: true
+note: >-
+  Only the 9 read operations are proposed as tools. The 15 write operations (POST/DELETE across
+  events, venues, organizers, categories and tags) are deliberately excluded from this candidate
+  set: the contract publishes no reversal operation and no retention window for a delete
+  (see conventions/elisa-conventions.yml reversibility), so exposing them to an agent would be
+  handing it an irreversible action it cannot reason about.

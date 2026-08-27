@@ -1,0 +1,81 @@
+# generated: '2026-08-27'
+# method: generated
+# source: openapi/elisa-events-calendar-openapi.json
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — ELISA Events API
+  version: 1.0.0
+extends: openapi/elisa-events-calendar-openapi.json
+actions:
+- target: $.info
+  update:
+    x-provider: ELISA (Enabling Linux in Safety Applications), a Linux Foundation project
+    x-provider-slug: elisa
+    x-provenance: Harvested verbatim 2026-08-27 from https://elisa.tech/wp-json/tribe/events/v1/doc. The
+      document is emitted by The Events Calendar plugin running on elisa.tech; servers[] resolves to ELISA's
+      own host and the data it returns is ELISA's own event data.
+    x-discovery: Declared by ELISA at https://elisa.tech/.well-known/api-catalog (RFC 9727 linkset).
+- target: $
+  update:
+    x-artifacts:
+      authentication: authentication/elisa-authentication.yml
+      conventions: conventions/elisa-conventions.yml
+      errors: errors/elisa-problem-types.yml
+      data-model: data-model/elisa-data-model.yml
+      lifecycle: lifecycle/elisa-lifecycle.yml
+      conformance: conformance/elisa-conformance.yml
+      well-known: well-known/elisa-well-known.yml
+- target: $.paths['/events'].get
+  update:
+    operationId: listEvents
+    summary: List ELISA events
+    x-note: The upstream document ships no operationId and no summary on any of its 30 operations. Every
+      operationId added by this overlay is an API Evangelist addition, derived from the method and path
+      — it is NOT published by the provider, and a client must not assume the provider will honour it.
+    x-empty-result: Returns 404, not an empty 200, when no events match the filters.
+- target: $.paths['/events/{id}'].get
+  update:
+    operationId: getEventById
+    summary: Get an ELISA event by ID
+- target: $.paths['/events/by-slug/{slug}'].get
+  update:
+    operationId: getEventBySlug
+    summary: Get an ELISA event by slug
+- target: $.paths['/venues'].get
+  update:
+    operationId: listVenues
+    summary: List ELISA event venues
+- target: $.paths['/venues/{id}'].get
+  update:
+    operationId: getVenueById
+    summary: Get a venue by ID
+- target: $.paths['/organizers'].get
+  update:
+    operationId: listOrganizers
+    summary: List ELISA event organizers
+- target: $.paths['/organizers/{id}'].get
+  update:
+    operationId: getOrganizerById
+    summary: Get an organizer by ID
+- target: $.paths['/categories'].get
+  update:
+    operationId: listEventCategories
+    summary: List the event category taxonomy
+- target: $.paths['/tags'].get
+  update:
+    operationId: listEventTags
+    summary: List the event tag taxonomy
+- target: $.paths['/events/{id}'].delete
+  update:
+    operationId: deleteEventById
+    x-reversibility: NO reversal operation and NO retention window are published for this delete. A repeat
+      call returns 410 Gone. Treat as irreversible.
+    x-consequence: destructive
+- target: $.paths['/venues/{id}'].delete
+  update:
+    operationId: deleteVenueById
+    x-consequence: destructive
+- target: $.paths['/organizers/{id}'].delete
+  update:
+    operationId: deleteOrganizerById
+    x-consequence: destructive

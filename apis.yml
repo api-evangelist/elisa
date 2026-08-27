@@ -1,20 +1,29 @@
 aid: elisa
 name: ELISA
 description: >-
-  ELISA (Enabling Linux in Safety Applications) is a Linux Foundation project that creates shared tools and processes to help companies build and certify Linux-based safety-critical applications. It addresses functional safety requirements for automotive, medical, and industrial systems using Linux.
+  ELISA (Enabling Linux in Safety Applications) is a Linux Foundation collaborative project that
+  builds the shared tools, processes and evidence needed to use Linux in safety-critical systems.
+  Its working groups and special interest groups span automotive, aerospace, medical devices,
+  railways, space-grade Linux and open-source engineering process, producing white papers, case
+  studies, kernel analysis tooling and a public technical directory. ELISA develops two tools of
+  its own: BASIL, a software quality management and traceability application with an HTTP REST
+  API and SPDX 3.0.1 export, and ks-nav, kernel-source navigation tooling. ELISA itself publishes
+  a machine-readable API surface at https://elisa.tech/wp-json/ — declared through an RFC 9727
+  api-catalog and described by a live OpenAPI 3.0.0 document — plus an llms.txt and permissive
+  Content Signals for AI use.
 type: Index
 accessModel:
-  pricing: freemium
-  onboarding: unknown
+  pricing: free
+  onboarding: none
   trial: false
-  try_now: false
-  public: false
-  label: Freemium
-  confidence: medium
+  try_now: true
+  public: true
+  label: Free and anonymous
+  confidence: high
   source:
-  - plans
-  generated: '2026-07-22'
-  method: derived
+  - probe
+  generated: '2026-08-27'
+  method: probed
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/elisa.png
@@ -23,38 +32,186 @@ tags:
   - Linux
   - Linux Foundation
   - Safety
+  - Functional Safety
+  - Open Source
+  - Automotive
+  - Aerospace
+  - Medical Devices
+  - Traceability
+  - Standards
+  - Events
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-08-27'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/elisa/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
-  - aid: elisa:elisa-api
-    name: ELISA API
+  - aid: elisa:elisa-events-api
+    name: ELISA Events API
     description: >-
-      Programmatic access to ELISA safety certification tools, functional safety resources, and Linux safety analysis APIs.
-    humanURL: https://elisa.tech/resources/
+      ELISA's live event calendar as a read-and-write REST API — workshops, seminars, conference
+      appearances, plus the venues, organizers, categories and tags behind them. Thirty operations
+      across fourteen paths, described by an OpenAPI 3.0.0 document ELISA serves at
+      /wp-json/tribe/events/v1/doc and declared through its RFC 9727 api-catalog. Reads are
+      anonymous and were verified live; writes require a WordPress Application Password.
+    humanURL: https://elisa.tech/events/
+    baseURL: https://elisa.tech/wp-json/tribe/events/v1/
     tags:
-      - Embedded
-      - Linux
+      - Events
+      - Calendar
       - Linux Foundation
       - Safety
     properties:
+      - type: OpenAPI
+        url: openapi/elisa-events-calendar-openapi.json
+      - type: Overlay
+        url: overlays/elisa-events-calendar-overlay.yaml
+      - type: APIReference
+        name: Live OpenAPI document
+        url: https://elisa.tech/wp-json/tribe/events/v1/doc
       - type: Documentation
-        url: https://elisa.tech/resources/
+        name: WordPress REST API handbook
+        url: https://developer.wordpress.org/rest-api/
+      - type: DataModel
+        url: data-model/elisa-data-model.yml
+      - type: ErrorCatalog
+        url: errors/elisa-problem-types.yml
+      - type: Conventions
+        url: conventions/elisa-conventions.yml
+      - type: Authentication
+        url: authentication/elisa-authentication.yml
+  - aid: elisa:elisa-basil-api
+    name: BASIL REST API
+    description: >-
+      BASIL — "The FuSa Spice" — is ELISA's own software quality management tool. It decomposes a
+      software component specification into snippets, maps work items (software requirements, test
+      specifications, test cases, test runs, justifications, documents) onto them, tracks
+      completeness and exports a traceability matrix as SPDX Model 3, HTML or PDF. It ships a
+      Flask HTTP REST API specifically so it can be driven from automated toolchains, and it is
+      self-hosted — operators build the API and app containers from the provided Containerfiles.
+      No OpenAPI or other machine-readable contract is published for it.
+    humanURL: https://basil-the-fusa-spice.readthedocs.io/
+    baseURL: null
+    tags:
+      - Traceability
+      - Functional Safety
+      - Quality Management
+      - SPDX
+    properties:
+      - type: Documentation
+        name: BASIL documentation
+        url: https://basil-the-fusa-spice.readthedocs.io/
+      - type: SourceCode
+        url: https://github.com/elisa-tech/BASIL
+      - type: ChangeLog
+        name: BASIL releases
+        url: https://github.com/elisa-tech/BASIL/releases
+      - type: Demo
+        name: ELISA public BASIL instance
+        url: http://elisa-builder-00.iol.unh.edu:9056/
 common:
+  - type: DeveloperPortal
+    name: ELISA Technical Directory
+    description: ELISA's technical directory and knowledge base — the entry point to project results.
+    url: https://directory.elisa.tech/
+  - type: Documentation
+    name: ELISA Technical Directory
+    description: ELISA's published technical output and knowledge base.
+    url: https://directory.elisa.tech/
+  - type: APIReference
+    name: ELISA Events API — live OpenAPI
+    description: The OpenAPI 3.0.0 document ELISA serves for its events API namespace.
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: GettingStarted
+    name: ELISA FAQs
+    description: Frequently asked questions about the ELISA Project and how to get involved.
+    url: https://elisa.tech/about/faqs/
+  - type: Support
+    name: ELISA Technical Forum
+    description: The devel mailing list, ELISA's primary technical support channel.
+    url: https://lists.elisa.tech/g/devel
+  - type: HelpCenter
+    name: Contact ELISA
+    url: https://elisa.tech/about/contact/
+  - type: Blog
+    name: ELISA Blog
+    url: https://elisa.tech/blog/
+  - type: BlogRSS
+    name: ELISA RSS feed
+    url: https://elisa.tech/feed/
+  - type: GitHubOrganization
+    name: ELISA GitHub
+    description: Source code and repositories for ELISA, including BASIL and ks-nav.
+    url: https://github.com/elisa-tech
+  - type: SignUp
+    name: Become an ELISA Member
+    url: https://elisa.tech/membership/join/
+  - type: Pricing
+    name: ELISA Membership Pricing Guide
+    description: Published annual membership dues by tier and employee band.
+    url: https://elisa.tech/membership/join/
+  - type: TermsOfService
+    name: Linux Foundation Terms of Use
+    url: https://www.linuxfoundation.org/terms
+  - type: PrivacyPolicy
+    name: Linux Foundation Privacy Policy
+    url: https://www.linuxfoundation.org/privacy
+  - type: WhitePapers
+    name: ELISA White Papers
+    url: https://elisa.tech/white-papers/
+  - type: CaseStudies
+    name: ELISA Case Studies
+    url: https://elisa.tech/case-studies/
+  - type: Community
+    name: ELISA Discord
+    url: http://chat.elisa.tech/
+  - type: OpenAPI
+    name: ELISA Events API (harvested)
+    url: openapi/elisa-events-calendar-openapi.json
+  - type: Overlay
+    url: overlays/elisa-events-calendar-overlay.yaml
+  - type: WellKnown
+    name: ELISA .well-known probe
+    description: RFC 9727 api-catalog and llms.txt both served; index of every path probed.
+    url: well-known/elisa-well-known.yml
+  - type: APICatalog
+    name: RFC 9727 API Catalog
+    description: ELISA's linkset declaring https://elisa.tech/wp-json/ as its API description.
+    url: well-known/elisa-api-catalog.json
+  - type: LLMsTxt
+    name: ELISA llms.txt
+    url: llms/elisa-llms.txt
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/elisa-lifecycle.yml
+  - type: Conformance
+    url: conformance/elisa-conformance.yml
+  - type: ChangeLog
+    name: BASIL release history
+    url: changelog/elisa-changelog.yml
+  - type: Packages
+    url: packages/elisa-packages.yml
+  - type: AgentSkill
+    name: ELISA Agent Skills
+    url: skills/_index.yml
   - type: DomainSecurity
     url: security/elisa-domain-security.yml
-  - type: Documentation
-    name: ELISA Documentation
-    description: Official documentation for ELISA.
-    url: https://elisa.tech/resources/
-  - type: GitHubOrg
-    name: ELISA GitHub
-    description: Source code and repositories for ELISA.
-    url: https://github.com/elisa-tech
-  - type: Blog
-    url: https://elisa.tech/feed/
+  - type: Plans
+    url: plans/elisa-plans-pricing.yml
+  - type: FinOps
+    url: finops/elisa-finops.yml
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+x-enrichment:
+  date: '2026-08-27'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

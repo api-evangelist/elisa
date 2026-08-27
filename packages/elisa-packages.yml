@@ -1,0 +1,60 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  npm registry search, pypi.org/pypi/*/json, github.com/elisa-tech (27 repos),
+  https://basil-the-fusa-spice.readthedocs.io/en/latest/how_to_run_it.html
+provider: ELISA
+providerId: elisa
+package_count: 0
+official_sdk_count: 0
+summary: >-
+  ELISA publishes no first-party client library for any API surface, in any registry, in any
+  language. This is a real and confidently-established zero, not an unchecked gap.
+searched:
+  - registry: npm
+    query: 'elisa safety / elisa-tech'
+    result: no first-party package; every hit belongs to an unrelated project
+  - registry: pypi
+    queries: [basil, basil-app, elisa-basil]
+    result: >-
+      basil resolves to an unrelated 2013 package ("Build a system instant-like",
+      home_page http://pypi.python.org/pypi/basil) — NOT elisa-tech/BASIL. basil-app and
+      elisa-basil both 404. ELISA's BASIL is not on PyPI.
+  - registry: github
+    org: elisa-tech
+    result: >-
+      27 repositories, all source distributions. No package published to a language registry.
+      The two named tools (BASIL, ks-nav) ship as source plus Containerfiles.
+distribution:
+  - name: BASIL
+    kind: container-from-source
+    official: true
+    registry: null
+    version: v1.8.12
+    published: '2026-05-08'
+    source: https://github.com/elisa-tech/BASIL
+    docs: https://basil-the-fusa-spice.readthedocs.io/
+    install: "git clone https://github.com/elisa-tech/BASIL && sudo ./run_demo.sh"
+    note: >-
+      BASIL is ELISA's own software-quality-management and traceability tool and it exposes an
+      HTTP REST API — but it is distributed as SOURCE that the operator builds into podman
+      containers (Containerfile-api-fedora / Containerfile-api-debian / Containerfile-app).
+      There is no published image in any container registry and no metadata endpoint to query,
+      so the version/published fields above are read from the GitHub Releases feed
+      (https://api.github.com/repos/elisa-tech/BASIL/releases), which is the only dated,
+      provider-published version signal that exists for it. Release cadence is healthy —
+      8 releases with v1.8.12 shipped 2026-05-08 and the default branch pushed 2026-08-27.
+  - name: ks-nav
+    kind: source
+    official: true
+    registry: null
+    version: null
+    published: null
+    source: https://github.com/elisa-tech/ks-nav
+    note: >-
+      Kernel-source navigation tooling. No tagged releases and no registry distribution, so there
+      is nothing dated to record — checked, nothing to record, rather than not checked.
+      Last pushed 2025-03-17.
+note: >-
+  No SDKs pointer is emitted for this provider. Emitting one would assert a client library that
+  does not exist; the correct reading of ELISA is that its API surface is callable but unwrapped.

@@ -1,0 +1,95 @@
+generated: '2026-08-27'
+method: derived
+source: openapi/elisa-events-calendar-openapi.json
+provider: ELISA
+providerId: elisa
+note: Entity-relationship graph derived from components.schemas $ref edges in the OpenAPI ELISA serves
+  at https://elisa.tech/wp-json/tribe/events/v1/doc. Event is the root aggregate; Venue and Organizer
+  are addressable resources in their own right, Term backs both the categories and tags taxonomies, and
+  Image/ImageSize/DateDetails/CostDetails are value objects embedded in Event.
+root_entity: Event
+entity_count: 8
+entities:
+- name: ImageSize
+  description: null
+  property_count: 4
+  identifier_fields: null
+  relationships: null
+- name: CostDetails
+  description: null
+  property_count: 3
+  identifier_fields: null
+  relationships: null
+- name: Term
+  description: null
+  property_count: 9
+  identifier_fields:
+  - id
+  relationships: null
+- name: Image
+  description: null
+  property_count: 6
+  identifier_fields:
+  - id
+  relationships:
+  - target: ImageSize
+    cardinality: has_many
+    via: sizes
+- name: DateDetails
+  description: null
+  property_count: 6
+  identifier_fields: null
+  relationships: null
+- name: Event
+  description: null
+  property_count: 39
+  identifier_fields:
+  - global_id
+  - id
+  - organizer
+  - venue
+  relationships:
+  - target: CostDetails
+    cardinality: has_many
+    via: cost_details
+  - target: DateDetails
+    cardinality: has_many
+    via: start_date_details
+  - target: Image
+    cardinality: has_one
+    via: image
+  - target: Organizer
+    cardinality: has_many
+    via: organizer
+  - target: Term
+    cardinality: has_many
+    via: categories
+  - target: Venue
+    cardinality: has_one
+    via: venue
+- name: Venue
+  description: null
+  property_count: 28
+  identifier_fields:
+  - global_id
+  - id
+  - venue
+  relationships:
+  - target: Image
+    cardinality: has_one
+    via: image
+- name: Organizer
+  description: null
+  property_count: 18
+  identifier_fields:
+  - global_id
+  - id
+  - organizer
+  relationships:
+  - target: Image
+    cardinality: has_one
+    via: image
+identifier_scheme:
+  style: integer WordPress post ID, plus a URL slug alias
+  note: Every addressable entity is reachable both as /{resource}/{id} (integer post ID) and /{resource}/by-slug/{slug}.
+    There are no prefixed/typed IDs — an ID is only meaningful together with its resource path.

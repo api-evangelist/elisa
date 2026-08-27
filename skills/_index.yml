@@ -1,0 +1,20 @@
+generated: '2026-08-27'
+method: generated
+source: openapi/elisa-events-calendar-openapi.json + conventions/elisa-conventions.yml + errors/elisa-problem-types.yml
+provider: ELISA
+providerId: elisa
+note: >-
+  Two packaged Agent Skills over the one machine-readable contract ELISA publishes. Both are
+  grounded in real paths and real parameters read from the harvested OpenAPI — the upstream
+  document ships no operationIds, so the skills address operations by method and path rather
+  than by an invented identifier. Both are deliberately read-only: see the reversibility finding
+  in conventions/elisa-conventions.yml.
+skills:
+  - name: elisa-track-project-events
+    file: elisa-track-project-events.md
+    description: Find and monitor ELISA Project events from ELISA's live calendar API.
+    read_only: true
+  - name: elisa-resolve-venues-organizers
+    file: elisa-resolve-venues-organizers.md
+    description: Resolve the venues and organizing bodies behind ELISA events, and reverse the lookup.
+    read_only: true

@@ -1,0 +1,6 @@
+User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Sitemap: https://elisa.tech/wp-sitemap.xml

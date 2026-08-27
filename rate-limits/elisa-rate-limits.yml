@@ -3,89 +3,46 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: ELISA
 providerId: elisa
+generated: '2026-08-27'
+method: probed
+source: >-
+  live unauthenticated requests to https://elisa.tech/wp-json/tribe/events/v1/events and
+  https://elisa.tech/wp-json/ on 2026-08-27, plus a read of every ELISA-published page
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-27'
+limit_count: 0
 tags:
   - Embedded
   - Linux
   - Linux Foundation
   - Safety
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the ELISA API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - ELISA API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - ELISA API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - ELISA API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - ELISA API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - ELISA API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+description: >-
+  ELISA documents no rate limits for its API surface, and none were observed on live responses.
+  An honest zero.
+  This file REPLACES a 2026-05-04 bulk-sweep scaffold that asserted free/professional/enterprise
+  tiers at 10/100/1000 requests per minute with monthly quotas of 1,000/100,000 and a full set of
+  X-RateLimit-* response headers. ELISA publishes none of that and returns none of those headers.
+  The scaffold was crediting ELISA with a rate-limit posture it does not have. See roadmap#35.
+headers: {}
+headers_observed: []
+responseCodes: {}
+limits: []
+findings:
+  - probe: GET https://elisa.tech/wp-json/tribe/events/v1/events?per_page=1
+    status: 200
+    rate_limit_headers: none
+    note: No X-RateLimit-*, no RateLimit-*, no Retry-After on the response.
+  - probe: GET https://elisa.tech/wp-json/
+    status: 200
+    rate_limit_headers: none
+  - source: https://elisa.tech/membership/join/
+    note: The only published commercial document is the membership dues table; it attaches no API quota or throughput term to any tier.
+note: >-
+  The absence is consistent with what this surface is — a Linux Foundation project's WordPress
+  REST API, fronted by nginx with New Relic instrumentation. Edge protection almost certainly
+  exists, but it is not documented, not announced in headers, and therefore not something an
+  agent can plan against. NO RateLimits pointer is emitted for this provider.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

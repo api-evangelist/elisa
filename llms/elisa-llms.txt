@@ -1,0 +1,55 @@
+# ELISA
+> Enabling Linux In Safety Critical Applications
+
+## Posts
+- [From Safety Processes to Latency Monitoring: ELISA Workshop 2026 Highlights](https://elisa.tech/ambassadors/2026/08/27/from-safety-processes-to-latency-monitoring-elisa-workshop-2026-highlights/): The ELISA Project community gathered at Canonical’s London office from June 9–11, 2026, for three days of technical presentations, discussions,
+- [ELISA Project at Open Source Summit Europe 2026](https://elisa.tech/ambassadors/2026/08/20/elisa-project-at-open-source-summit-europe-2026/): Open Source Summit is the premier event for open source developers and contributors. It is where maintainers, technologists, and community
+- [Letting Linux Fly: First Steps Towards Using Linux in Flight](https://elisa.tech/blog/2026/08/12/letting-linux-fly-first-steps-towards-using-linux-in-flight/): This blog was written by Dr.-Ing. Martin Halle and highlights the ELISA Project Aerospace Working Group’s first steps toward using
+- [Recap: ELISA Project London Workshop](https://elisa.tech/blog/2026/08/10/recap-elisa-project-london-workshop/): This recap includes observations and insights from ELISA Project leaders who participated in the workshop. In June, the ELISA Project
+- [Join the ELISA Project at Open Source Summit Korea 2026](https://elisa.tech/announcement/2026/08/04/join-the-elisa-project-at-open-source-summit-korea-2026/): How can open source software meet the rigorous requirements of safety-critical systems? What role can AI, memory-safe technologies, traceability frameworks,
+
+## Pages
+- [Working Groups](https://elisa.tech/community/working-groups/): All groups are open forums and consider this your invitation to participate in any of the groups that look interesting
+- [Special Interest Groups](https://elisa.tech/community/special-interest-groups/): SIGs are community-driven collaboration forums focused on specific industries, technologies, or emerging areas of interest. They provide a space for
+- [Community](https://elisa.tech/community/): Within the ELISA Project, Special Interest Groups (SIGs) and Working Groups (WGs) play complementary roles in advancing the use of
+- [Workshop Series](https://elisa.tech/workshop-series/): The ELISA Project hosts workshops on a regular basis to gather the project community to accelerate technical collaboration and output,
+- [ELISA – Advancing Linux in Safety-Critical Systems](https://elisa.tech/): ELISA is a Silver Sponsor for OSS Europe! Jon us in Prague this October for the Safety Critical Software Summit
+
+## Webinars
+- [WHAT-WHY-HOW: A practical model for understanding software requirements](https://elisa.tech/webinars/what-why-how-a-practical-model-for-understanding-software-requirements/)
+- [AvioNix: Infrastructure as Code for Linux in Avionics](https://elisa.tech/webinars/avionix-infrastructure-as-code-for-linux-in-avionics/)
+- [Functional Safety with Xen, Zephyr, and Linux for Avionics, Automotive and Industrial](https://elisa.tech/webinars/functional-safety-with-xen-zephyr-and-linux-for-avionics-automotive-and-industrial/)
+- [From Requirements to Code: Managing End-to-End Traceability with BASIL](https://elisa.tech/webinars/from-requirements-to-code-managing-end-to-end-traceability-with-basil/)
+- [Introduction to Requirements Engineering](https://elisa.tech/webinars/introduction-to-requirements-engineering/)
+
+## Venues
+- [Bosch IoT Campus](https://elisa.tech/venue/bosch-iot-campus/)
+- [Virtual Experience](https://elisa.tech/venue/virtual-experience/)
+
+## Organizers
+- [Linaro](https://elisa.tech/organizer/linaro/)
+
+## Events
+- [Embedded Linux Conference & Open Source Summit Europe 2026](https://elisa.tech/event/embedded-linux-conference-open-source-summit-europe-2026/): Open Source Summit is the premier event for open source developers and contributors. It’s where maintainers, technologists, and community leaders
+- [ELISA Project at Linux Plumbers Conference 2026: Safe Systems with Linux MC](https://elisa.tech/event/elisa-project-at-linux-plumbers-conference-2026-safe-systems-with-linux-mc/): The ELISA Project will be part of the Safe Systems with Linux Microconference at the Linux Plumbers Conference 2026, taking
+
+## Series
+- [WG SIG Annual Updates 2026](https://elisa.tech/series/wg-sig-annual-updates-2026/)
+- [Working Group Annual Updates 2025](https://elisa.tech/series/working-group-annual-updates-2025/)
+
+## Categories
+- [Blog](https://elisa.tech/category/blog/)
+- [Workshop](https://elisa.tech/category/workshop/)
+- [Working Group](https://elisa.tech/category/working-group/)
+- [Industry Conference](https://elisa.tech/category/industry-conference/)
+- [Safety-Critical Software Summit](https://elisa.tech/category/safety-critical-software-summit/)
+
+## Event Categories
+- [Industry Conference](https://elisa.tech/events/category/industry-conference/)
+- [ELISA Seminar Series](https://elisa.tech/events/category/elisa-seminar-series/)
+- [Workshop](https://elisa.tech/events/category/workshop/)
+- [Ambassador Presentations](https://elisa.tech/events/category/ambassador-presentations/)
+- [Working Group Updates](https://elisa.tech/events/category/working-group-updates/)
+
+## Optional
+- [Sitemap index](https://elisa.tech/wp-sitemap.xml)

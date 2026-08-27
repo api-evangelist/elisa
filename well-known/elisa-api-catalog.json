@@ -1,0 +1,22 @@
+{
+    "linkset": [
+        {
+            "anchor": "https://elisa.tech/wp-json/",
+            "service-desc": [
+                {
+                    "href": "https://elisa.tech/wp-json/"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "https://developer.wordpress.org/rest-api/"
+                }
+            ],
+            "status": [
+                {
+                    "href": "https://elisa.tech"
+                }
+            ]
+        }
+    ]
+}

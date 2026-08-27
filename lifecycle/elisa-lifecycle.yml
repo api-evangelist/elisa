@@ -1,0 +1,63 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  openapi/elisa-events-calendar-openapi.json, https://elisa.tech/wp-json/,
+  https://github.com/elisa-tech/BASIL/releases, live probes 2026-08-27
+provider: ELISA
+providerId: elisa
+versioning:
+  scheme: path-segment
+  current: v1
+  detail: >-
+    The API version is a path segment of the WordPress REST namespace —
+    https://elisa.tech/wp-json/tribe/events/v1/. The OpenAPI declares info.version 1.0.0.
+    Fourteen namespaces are registered on the host and each carries its own independent version
+    (wp/v2, tribe/events/v1, tec/v1, tec/v2/onboarding, wp-abilities/v1, ...), so "the API
+    version" is per-namespace, not site-wide.
+  published_policy: false
+  note: ELISA publishes no versioning policy of its own; version cadence is inherited from WordPress core and the plugins it runs.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No deprecation policy, no RFC 8594 Sunset/Deprecation headers, and no operation in the
+    published contract is marked deprecated. NO Deprecation pointer is emitted — the artifact
+    records the absence rather than asserting a policy.
+status_page:
+  published: false
+  url: null
+  note: >-
+    ELISA operates no status page. Probed /status, and no status host is referenced from the site
+    or from the RFC 9727 api-catalog — the catalog's "status" link points back at
+    https://elisa.tech (the site root), which is the WordPress default and not a status endpoint.
+    NO StatusPage pointer is emitted.
+sla:
+  published: false
+  note: >-
+    ELISA is a Linux Foundation project, not a commercial API vendor. There is no SLA, no uptime
+    commitment, and no support tier attached to the API surface. This is an accurate description
+    of the offering rather than a gap in it.
+support:
+  channels:
+    - type: mailing-list
+      url: https://lists.elisa.tech/g/devel
+      name: ELISA Technical Forum (devel)
+      status: 200
+    - type: chat
+      url: http://chat.elisa.tech/
+      name: ELISA Discord
+      status: 200
+    - type: contact-form
+      url: https://elisa.tech/about/contact/
+      status: 200
+release_cadence:
+  basil:
+    source: https://github.com/elisa-tech/BASIL/releases
+    latest: v1.8.12
+    latest_date: '2026-05-08'
+    release_count_observed: 8
+    default_branch_last_push: '2026-08-27'
+    note: Actively maintained; see changelog/elisa-changelog.yml.

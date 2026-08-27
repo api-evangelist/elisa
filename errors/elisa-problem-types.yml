@@ -1,0 +1,196 @@
+generated: '2026-08-27'
+method: derived
+source: openapi/elisa-events-calendar-openapi.json
+provider: ELISA
+providerId: elisa
+note: Derived from the 4xx/5xx responses declared in the OpenAPI 3.0.0 document ELISA serves at https://elisa.tech/wp-json/tribe/events/v1/doc.
+  The API does NOT emit RFC 9457 application/problem+json; it uses the standard WordPress REST error envelope
+  ({code, message, data:{status}}), which is what the envelope block below records. Titles and remediation
+  are written from the response descriptions in the spec plus the documented WordPress REST error contract;
+  no error codes were invented.
+format: wordpress-rest-error
+problem_json: false
+envelope:
+  content_type: application/json
+  fields:
+  - name: code
+    type: string
+    description: Machine-readable error slug, e.g. rest_no_route, rest_forbidden, rest_post_invalid_id.
+  - name: message
+    type: string
+    description: Human-readable message.
+  - name: data.status
+    type: integer
+    description: HTTP status code, repeated inside the body.
+  - name: data.params
+    type: object
+    description: Present on parameter-validation failures; maps the offending parameter to its message.
+  example_observed:
+    code: rest_no_route
+    message: No route was found matching the URL and request method.
+    data:
+      status: 404
+  example_source: https://elisa.tech/wp-json/wp/v2 (observed 2026-08-27)
+problem_types:
+- status: 400
+  title: Bad Request
+  type: https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#error-400
+  detail:
+  - A required parameter is missing or an input parameter is in the wrong format
+  - One or more of the specified query variables has a bad format
+  - The event category term ID is missing or does not exist.
+  - The event category term ID is missing.
+  - The event post ID is missing or does not exist.
+  - The event post ID is missing.
+  - The event tag term ID is missing or does not exist.
+  - The event tag term ID is missing.
+  - The organizer post ID is missing or does not exist.
+  - The organizer post ID is missing.
+  - The venue post ID is missing or does not exist.
+  - The venue post ID is missing.
+  remediation: Check required path/query parameters. Most 400s here mean the post ID or slug is missing
+    or does not resolve to an object of the requested type.
+  operations:
+  - DELETE /categories/{id}
+  - DELETE /events/by-slug/{slug}
+  - DELETE /events/{id}
+  - DELETE /organizers/by-slug/{slug}
+  - DELETE /organizers/{id}
+  - DELETE /tags/{id}
+  - DELETE /venues/by-slug/{slug}
+  - DELETE /venues/{id}
+  - GET /categories
+  - GET /categories/{id}
+  - GET /events
+  - GET /events/by-slug/{slug}
+  - GET /events/{id}
+  - GET /organizers
+  - GET /organizers/by-slug/{slug}
+  - GET /organizers/{id}
+  - GET /tags
+  - GET /tags/{id}
+  - GET /venues
+  - GET /venues/by-slug/{slug}
+  - GET /venues/{id}
+  - POST /categories/{id}
+  - POST /events/by-slug/{slug}
+  - POST /events/{id}
+  - POST /organizers/by-slug/{slug}
+  - POST /organizers/{id}
+  - POST /tags/{id}
+  - POST /venues/by-slug/{slug}
+  - POST /venues/{id}
+  retryable: false
+- status: 403
+  title: Forbidden
+  type: https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#error-403
+  detail:
+  - The current user cannot delete the event category with the specified term ID.
+  - The current user cannot delete the event tag with the specified term ID.
+  - The current user cannot delete the event with the specified ID.
+  - The current user cannot delete the organizer with the specified ID.
+  - The current user cannot delete the venue with the specified ID.
+  - The event with the specified ID is not accessible.
+  - The organizer with the specified ID is not accessible.
+  - The user is not authorized to create event categories
+  - The user is not authorized to create event tags
+  - The user is not authorized to create events
+  - The user is not authorized to create organizers
+  - The user is not authorized to create venues
+  - The venue with the specified ID is not accessible.
+  remediation: The request is unauthenticated or the authenticated user lacks the WordPress capability
+    for the operation. Authenticate with a WordPress Application Password over HTTP Basic and retry.
+  operations:
+  - DELETE /categories/{id}
+  - DELETE /events/by-slug/{slug}
+  - DELETE /events/{id}
+  - DELETE /organizers/by-slug/{slug}
+  - DELETE /organizers/{id}
+  - DELETE /tags/{id}
+  - DELETE /venues/by-slug/{slug}
+  - DELETE /venues/{id}
+  - GET /events/by-slug/{slug}
+  - GET /events/{id}
+  - GET /organizers/by-slug/{slug}
+  - GET /organizers/{id}
+  - GET /venues/by-slug/{slug}
+  - GET /venues/{id}
+  - POST /categories/{id}
+  - POST /events/by-slug/{slug}
+  - POST /events/{id}
+  - POST /organizers/by-slug/{slug}
+  - POST /organizers/{id}
+  - POST /tags/{id}
+  - POST /venues/by-slug/{slug}
+  - POST /venues/{id}
+  retryable: false
+- status: 404
+  title: Not Found
+  type: https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#error-404
+  detail:
+  - A venue with the specified post ID does not exist.
+  - An event category with the specified term ID does not exist.
+  - An event tag with the specified term ID does not exist.
+  - An event with the specified ID does not exist.
+  - An organizer with the specified event does not exist.
+  - No event tags match the query or the requested page was not found.
+  - The requested page was not found.
+  remediation: No objects matched the archive filters, or the requested ID/slug does not exist. Widen
+    the date/search filters or verify the identifier.
+  operations:
+  - GET /categories
+  - GET /categories/{id}
+  - GET /events
+  - GET /events/by-slug/{slug}
+  - GET /events/{id}
+  - GET /organizers
+  - GET /organizers/by-slug/{slug}
+  - GET /organizers/{id}
+  - GET /tags
+  - GET /tags/{id}
+  - GET /venues
+  - GET /venues/by-slug/{slug}
+  - GET /venues/{id}
+  retryable: false
+- status: 410
+  title: Gone
+  type: https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#error-410
+  detail:
+  - The event category with the specified term ID has been deleted already.
+  - The event tag with the specified term ID has been deleted already.
+  - The event with the specified ID has been deleted already.
+  - The organizer with the specified ID has been deleted already.
+  - The venue with the specified ID has been deleted already.
+  remediation: The object was already deleted. Treat as terminal success for a delete workflow; do not
+    retry.
+  operations:
+  - DELETE /categories/{id}
+  - DELETE /events/by-slug/{slug}
+  - DELETE /events/{id}
+  - DELETE /organizers/by-slug/{slug}
+  - DELETE /organizers/{id}
+  - DELETE /tags/{id}
+  - DELETE /venues/by-slug/{slug}
+  - DELETE /venues/{id}
+  retryable: false
+- status: 500
+  title: Internal Server Error
+  type: https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#error-500
+  detail:
+  - The event category with the specified term ID could not be deleted.
+  - The event tag with the specified term ID could not be deleted.
+  - The event with the specified ID could not be deleted.
+  - The organizer with the specified ID could not be deleted.
+  - The venue with the specified ID could not be deleted.
+  remediation: Server-side failure during deletion. Retry with backoff; if it persists the object may
+    be in an inconsistent state and needs admin intervention.
+  operations:
+  - DELETE /categories/{id}
+  - DELETE /events/by-slug/{slug}
+  - DELETE /events/{id}
+  - DELETE /organizers/by-slug/{slug}
+  - DELETE /organizers/{id}
+  - DELETE /tags/{id}
+  - DELETE /venues/by-slug/{slug}
+  - DELETE /venues/{id}
+  retryable: true
