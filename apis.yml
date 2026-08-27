@@ -46,69 +46,166 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/elisa/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
-  - aid: elisa:elisa-events-api
-    name: ELISA Events API
-    description: >-
-      ELISA's live event calendar as a read-and-write REST API — workshops, seminars, conference
-      appearances, plus the venues, organizers, categories and tags behind them. Thirty operations
-      across fourteen paths, described by an OpenAPI 3.0.0 document ELISA serves at
-      /wp-json/tribe/events/v1/doc and declared through its RFC 9727 api-catalog. Reads are
-      anonymous and were verified live; writes require a WordPress Application Password.
-    humanURL: https://elisa.tech/events/
-    baseURL: https://elisa.tech/wp-json/tribe/events/v1/
-    tags:
-      - Events
-      - Calendar
-      - Linux Foundation
-      - Safety
-    properties:
-      - type: OpenAPI
-        url: openapi/elisa-events-calendar-openapi.json
-      - type: Overlay
-        url: overlays/elisa-events-calendar-overlay.yaml
-      - type: APIReference
-        name: Live OpenAPI document
-        url: https://elisa.tech/wp-json/tribe/events/v1/doc
-      - type: Documentation
-        name: WordPress REST API handbook
-        url: https://developer.wordpress.org/rest-api/
-      - type: DataModel
-        url: data-model/elisa-data-model.yml
-      - type: ErrorCatalog
-        url: errors/elisa-problem-types.yml
-      - type: Conventions
-        url: conventions/elisa-conventions.yml
-      - type: Authentication
-        url: authentication/elisa-authentication.yml
-  - aid: elisa:elisa-basil-api
-    name: BASIL REST API
-    description: >-
-      BASIL — "The FuSa Spice" — is ELISA's own software quality management tool. It decomposes a
-      software component specification into snippets, maps work items (software requirements, test
-      specifications, test cases, test runs, justifications, documents) onto them, tracks
-      completeness and exports a traceability matrix as SPDX Model 3, HTML or PDF. It ships a
-      Flask HTTP REST API specifically so it can be driven from automated toolchains, and it is
-      self-hosted — operators build the API and app containers from the provided Containerfiles.
-      No OpenAPI or other machine-readable contract is published for it.
-    humanURL: https://basil-the-fusa-spice.readthedocs.io/
-    baseURL: null
-    tags:
-      - Traceability
-      - Functional Safety
-      - Quality Management
-      - SPDX
-    properties:
-      - type: Documentation
-        name: BASIL documentation
-        url: https://basil-the-fusa-spice.readthedocs.io/
-      - type: SourceCode
-        url: https://github.com/elisa-tech/BASIL
-      - type: ChangeLog
-        name: BASIL releases
-        url: https://github.com/elisa-tech/BASIL/releases
-      - type: Demo
-        name: ELISA public BASIL instance
-        url: http://elisa-builder-00.iol.unh.edu:9056/
+- aid: elisa:elisa-basil-api
+  name: BASIL REST API
+  description: >-
+    BASIL — "The FuSa Spice" — is ELISA's own software quality management tool. It decomposes a software
+    component specification into snippets, maps work items (software requirements, test specifications,
+    test cases, test runs, justifications, documents) onto them, tracks completeness and exports a traceability
+    matrix as SPDX Model 3, HTML or PDF. It ships a Flask HTTP REST API specifically so it can be driven
+    from automated toolchains, and it is self-hosted — operators build the API and app containers from
+    the provided Containerfiles. No OpenAPI or other machine-readable contract is published for it.
+  humanURL: https://basil-the-fusa-spice.readthedocs.io/
+  baseURL: null
+  tags:
+  - Traceability
+  - Functional Safety
+  - Quality Management
+  - SPDX
+  properties:
+  - type: Documentation
+    name: BASIL documentation
+    url: https://basil-the-fusa-spice.readthedocs.io/
+  - type: SourceCode
+    url: https://github.com/elisa-tech/BASIL
+  - type: ChangeLog
+    name: BASIL releases
+    url: https://github.com/elisa-tech/BASIL/releases
+  - type: Demo
+    name: ELISA public BASIL instance
+    url: http://elisa-builder-00.iol.unh.edu:9056/
+- aid: elisa:elisa-categories-api
+  name: ELISA Categories API
+  description: The Categories API from ELISA — 2 operation(s) for categories.
+  humanURL: https://elisa.tech/events/
+  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/elisa-categories-api-openapi.yml
+  - type: APIReference
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
+- aid: elisa:elisa-doc-api
+  name: ELISA Doc API
+  description: The Doc API from ELISA — 1 operation(s) for doc.
+  humanURL: https://elisa.tech/events/
+  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+  tags:
+  - Doc
+  properties:
+  - type: OpenAPI
+    url: openapi/elisa-doc-api-openapi.yml
+  - type: APIReference
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
+- aid: elisa:elisa-events-api
+  name: ELISA Events API
+  description: The Events API from ELISA — 3 operation(s) for events.
+  humanURL: https://elisa.tech/events/
+  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/elisa-events-api-openapi.yml
+  - type: APIReference
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
+- aid: elisa:elisa-organizers-api
+  name: ELISA Organizers API
+  description: The Organizers API from ELISA — 3 operation(s) for organizers.
+  humanURL: https://elisa.tech/events/
+  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+  tags:
+  - Organizers
+  properties:
+  - type: OpenAPI
+    url: openapi/elisa-organizers-api-openapi.yml
+  - type: APIReference
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
+- aid: elisa:elisa-tags-api
+  name: ELISA Tags API
+  description: The Tags API from ELISA — 2 operation(s) for tags.
+  humanURL: https://elisa.tech/events/
+  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/elisa-tags-api-openapi.yml
+  - type: APIReference
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
+- aid: elisa:elisa-venues-api
+  name: ELISA Venues API
+  description: The Venues API from ELISA — 3 operation(s) for venues.
+  humanURL: https://elisa.tech/events/
+  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+  tags:
+  - Venues
+  properties:
+  - type: OpenAPI
+    url: openapi/elisa-venues-api-openapi.yml
+  - type: APIReference
+    url: https://elisa.tech/wp-json/tribe/events/v1/doc
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: DataModel
+    url: data-model/elisa-data-model.yml
+  - type: ErrorCatalog
+    url: errors/elisa-problem-types.yml
+  - type: Conventions
+    url: conventions/elisa-conventions.yml
+  - type: Authentication
+    url: authentication/elisa-authentication.yml
 common:
   - type: DeveloperPortal
     name: ELISA Technical Directory
