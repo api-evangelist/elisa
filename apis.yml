@@ -12,6 +12,18 @@ description: >-
   api-catalog and described by a live OpenAPI 3.0.0 document — plus an llms.txt and permissive
   Content Signals for AI use.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: none
