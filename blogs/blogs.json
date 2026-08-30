@@ -14,8 +14,22 @@
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://elisa.tech/about/contact/",
+      "feed_url": "https://elisa.tech/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    },
+    {
+      "source": "https://elisa.tech/blog/",
+      "feed_url": "https://elisa.tech/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "fetched": "2026-08-22T20:20:02Z",
-  "post_count": 27
+  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 28
 }

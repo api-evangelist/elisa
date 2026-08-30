@@ -45,6 +45,19 @@ tags:
   - Linux Foundation
   - Safety
   - Functional Safety
+  - Open-Source
+  - Automotive
+  - Aerospace
+  - Medical Devices
+  - Traceability
+  - Standards
+  - Event
+tags_raw:
+  - Embedded
+  - Linux
+  - Linux Foundation
+  - Safety
+  - Functional Safety
   - Open Source
   - Automotive
   - Aerospace
@@ -136,6 +149,8 @@ apis:
   humanURL: https://elisa.tech/events/
   baseURL: https://elisa.tech/wp-json/tribe/events/v1/
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
