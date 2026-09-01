@@ -234,6 +234,9 @@ apis:
   - type: Authentication
     url: authentication/elisa-authentication.yml
 common:
+  - type: License
+    name: GPL-2.0
+    url: https://github.com/elisa-tech/BASIL/blob/main/LICENSE
   - type: DeveloperPortal
     name: ELISA Technical Directory
     description: ELISA's technical directory and knowledge base — the entry point to project results.
