@@ -36,7 +36,7 @@ accessModel:
   - probe
   generated: '2026-08-27'
   method: probed
-position: Consumer
+position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/elisa.png
 tags:
