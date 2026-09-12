@@ -234,6 +234,8 @@ apis:
   - type: Authentication
     url: authentication/elisa-authentication.yml
 common:
+  - type: Website
+    url: https://elisa.tech/
   - type: License
     name: GPL-2.0
     url: https://github.com/elisa-tech/BASIL/blob/main/LICENSE
