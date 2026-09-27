@@ -43,7 +43,7 @@ tags:
 - Linux Foundation
 - Safety
 - Functional Safety
-- Open-Source
+- Open Source
 - Automotive
 - Aerospace
 - Medical Devices
@@ -63,6 +63,7 @@ tags_raw:
 - Traceability
 - Standards
 - Events
+- Open-Source
 created: '2026-03-16'
 modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/elisa/refs/heads/main/apis.yml
@@ -95,140 +96,20 @@ apis:
   - type: Demo
     name: ELISA public BASIL instance
     url: http://elisa-builder-00.iol.unh.edu:9056/
-- aid: elisa:elisa-categories-api
-  name: ELISA Categories API
-  description: The Categories API from ELISA — 2 operation(s) for categories.
-  humanURL: https://elisa.tech/events/
-  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
+- aid: elisa:elisa-tech-website-wordpress-rest
+  name: ELISA Website (WordPress REST)
+  description: 'The public WordPress REST API (wp-json) of the ELISA website at elisa.tech: the route
+    index of the site''s content management system, catalogued as one site surface rather than as separate
+    APIs.'
+  baseURL: https://elisa.tech/wp-json
   tags:
-  - Categories
+  - WordPress
+  x-surface: platform-generated
   properties:
-  - type: OpenAPI
-    url: openapi/elisa-categories-api-openapi.yml
-  - type: APIReference
-    url: https://elisa.tech/wp-json/tribe/events/v1/doc
   - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: DataModel
-    url: data-model/elisa-data-model.yml
-  - type: ErrorCatalog
-    url: errors/elisa-problem-types.yml
-  - type: Conventions
-    url: conventions/elisa-conventions.yml
-  - type: Authentication
-    url: authentication/elisa-authentication.yml
-- aid: elisa:elisa-doc-api
-  name: ELISA Doc API
-  description: The Doc API from ELISA — 1 operation(s) for doc.
-  humanURL: https://elisa.tech/events/
-  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
-  tags:
-  - Doc
-  properties:
-  - type: OpenAPI
-    url: openapi/elisa-doc-api-openapi.yml
-  - type: APIReference
-    url: https://elisa.tech/wp-json/tribe/events/v1/doc
-  - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: DataModel
-    url: data-model/elisa-data-model.yml
-  - type: ErrorCatalog
-    url: errors/elisa-problem-types.yml
-  - type: Conventions
-    url: conventions/elisa-conventions.yml
-  - type: Authentication
-    url: authentication/elisa-authentication.yml
-- aid: elisa:elisa-events-api
-  name: ELISA Events API
-  description: The Events API from ELISA — 3 operation(s) for events.
-  humanURL: https://elisa.tech/events/
-  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
-  tags:
-  - Event
-  tags_raw:
-  - Events
-  properties:
-  - type: OpenAPI
-    url: openapi/elisa-events-api-openapi.yml
-  - type: APIReference
-    url: https://elisa.tech/wp-json/tribe/events/v1/doc
-  - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: DataModel
-    url: data-model/elisa-data-model.yml
-  - type: ErrorCatalog
-    url: errors/elisa-problem-types.yml
-  - type: Conventions
-    url: conventions/elisa-conventions.yml
-  - type: Authentication
-    url: authentication/elisa-authentication.yml
-- aid: elisa:elisa-organizers-api
-  name: ELISA Organizers API
-  description: The Organizers API from ELISA — 3 operation(s) for organizers.
-  humanURL: https://elisa.tech/events/
-  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
-  tags:
-  - Organizers
-  properties:
-  - type: OpenAPI
-    url: openapi/elisa-organizers-api-openapi.yml
-  - type: APIReference
-    url: https://elisa.tech/wp-json/tribe/events/v1/doc
-  - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: DataModel
-    url: data-model/elisa-data-model.yml
-  - type: ErrorCatalog
-    url: errors/elisa-problem-types.yml
-  - type: Conventions
-    url: conventions/elisa-conventions.yml
-  - type: Authentication
-    url: authentication/elisa-authentication.yml
-- aid: elisa:elisa-tags-api
-  name: ELISA Tags API
-  description: The Tags API from ELISA — 2 operation(s) for tags.
-  humanURL: https://elisa.tech/events/
-  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
-  tags:
-  - Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/elisa-tags-api-openapi.yml
-  - type: APIReference
-    url: https://elisa.tech/wp-json/tribe/events/v1/doc
-  - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: DataModel
-    url: data-model/elisa-data-model.yml
-  - type: ErrorCatalog
-    url: errors/elisa-problem-types.yml
-  - type: Conventions
-    url: conventions/elisa-conventions.yml
-  - type: Authentication
-    url: authentication/elisa-authentication.yml
-- aid: elisa:elisa-venues-api
-  name: ELISA Venues API
-  description: The Venues API from ELISA — 3 operation(s) for venues.
-  humanURL: https://elisa.tech/events/
-  baseURL: https://elisa.tech/wp-json/tribe/events/v1/
-  tags:
-  - Venues
-  properties:
-  - type: OpenAPI
-    url: openapi/elisa-venues-api-openapi.yml
-  - type: APIReference
-    url: https://elisa.tech/wp-json/tribe/events/v1/doc
-  - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: DataModel
-    url: data-model/elisa-data-model.yml
-  - type: ErrorCatalog
-    url: errors/elisa-problem-types.yml
-  - type: Conventions
-    url: conventions/elisa-conventions.yml
-  - type: Authentication
-    url: authentication/elisa-authentication.yml
+    url: https://elisa.tech/wp-json
+  x-platform: wordpress
+  x-platform-surface: rest
 common:
 - type: Website
   url: https://elisa.tech/
