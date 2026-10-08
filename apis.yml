@@ -115,6 +115,8 @@ apis:
   x-platform: wordpress
   x-platform-surface: rest
 common:
+- type: RateLimits
+  url: rate-limits/elisa-rate-limits.yml
 - type: Website
   url: https://elisa.tech/
 - type: License
