@@ -1,4 +1,4 @@
-# ELISA (elisa)
+# ELISA
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,39 +64,125 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-ELISA (Enabling Linux in Safety Applications) is a Linux Foundation project that creates shared tools and processes to help companies build and certify Linux-based safety-critical applications. It addresses functional safety requirements for automotive, medical, and industrial systems using Linux.
+ELISA (Enabling Linux in Safety Applications) is a Linux Foundation collaborative project that builds the shared tools, processes and evidence needed to use Linux in safety-critical systems. Its working groups and special interest groups span automotive, aerospace, medical devices, railways, space-grade Linux and open-source engineering process, producing white papers, case studies, kernel analysis tooling and a public technical directory. ELISA develops two tools of its own: BASIL, a software quality management and traceability application with an HTTP REST API and SPDX 3.0.1 export, and ks-nav, kernel-source navigation tooling. ELISA itself publishes a machine-readable API surface at https://elisa.tech/wp-json/ — declared through an RFC 9727 api-catalog and described by a live OpenAPI 3.0.0 document — plus an llms.txt and permissive Content Signals for AI use.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/elisa/refs/heads/main/apis.yml)
+**Areas:** Embedded · Linux · Linux Foundation · Safety · Functional Safety · Open Source · Automotive · Aerospace · Medical Devices · Traceability · Standards · Event
 
-## Scope
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+## ELISA on APIs.io
 
-## Tags:
- - Safety, Linux, Embedded, Linux Foundation
+Everything profiled for ELISA is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/elisa/](https://apis.io/providers/elisa/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
-- **Created:** 2026-03-16
-- **Modified:** 2026-03-16
+### APIs (2)
 
-## APIs
+- [BASIL REST API](https://apis.io/apis/elisa/elisa-basil-api/) — BASIL — "The FuSa Spice" — is ELISA's own software quality management tool. It decomposes a software component specification into snippets, maps work items…
+- [ELISA Website (WordPress REST)](https://apis.io/apis/elisa/elisa-tech-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the ELISA website at elisa.tech: the route index of the site's content management system, catalogued as one site…
 
-### ELISA API
-Programmatic access to ELISA safety certification tools, functional safety resources, and Linux safety analysis APIs.
+### Published properties
 
-**Human URL:** [https://elisa.tech/resources/](https://elisa.tech/resources/)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags:
- - Safety, Linux, Embedded, Linux Foundation
+#### MCP servers (1)
 
-#### Properties
-- [Documentation](https://elisa.tech/resources/)
+Model Context Protocol servers that expose the API to agents.
 
-## Common Properties
-- [Documentation](https://elisa.tech/resources/)
-- [GitHub Repository](https://github.com/elisa-tech)
+- [elisa-mcp.yml](https://apis.io/servers/elisa/elisa-mcp-yml/)
 
-## Maintainers
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Elisa Events Calendar Overlay](https://apis.io/overlays/elisa/elisa-events-calendar-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Elisa Authentication](https://apis.io/security/elisa/elisa-authentication/)
+- [Elisa Domain Security](https://apis.io/security/elisa/elisa-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Elisa Plans Pricing](https://apis.io/plans/elisa/elisa-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Elisa Rate Limits](https://apis.io/rate-limits/elisa/elisa-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Elisa Finops](https://apis.io/finops/elisa/elisa-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://elisa.tech/)
+- [Documentation](https://directory.elisa.tech/)
+- [Getting started](https://elisa.tech/about/faqs/)
+- [API reference](https://elisa.tech/wp-json/tribe/events/v1/doc)
+- [Pricing](https://elisa.tech/membership/join/)
+- [Sign up](https://elisa.tech/membership/join/)
+- [Support](https://lists.elisa.tech/g/devel)
+- [Blog](https://elisa.tech/blog/)
+- [Terms of service](https://www.linuxfoundation.org/terms)
+- [Privacy policy](https://www.linuxfoundation.org/privacy)
+- [GitHub](https://github.com/elisa-tech)
+
+## API Evangelist rating
+
+**Kin Score 36.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 76.3 |
+
+**Agent readiness 9.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.5** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/elisa/](https://apis.io/providers/elisa/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ELISA: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/elisa/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
