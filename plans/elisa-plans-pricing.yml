@@ -1,0 +1,121 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: ELISA
+providerId: elisa
+generated: '2026-08-27'
+method: searched
+source: https://elisa.tech/membership/join/
+created: '2026-05-04'
+modified: '2026-08-27'
+plan_count: 3
+tags:
+  - Embedded
+  - Linux
+  - Linux Foundation
+  - Safety
+description: >-
+  ELISA's published commercial structure. NOTE THE SHAPE OF THIS PROVIDER: ELISA is a Linux
+  Foundation collaborative project, not an API vendor. It sells organizational membership, not
+  API access — and the API surface it does publish is free, anonymous and unmetered. Both facts
+  are recorded below so neither is mistaken for the other.
+  This file REPLACES a 2026-05-04 bulk-sweep scaffold that invented Free/Professional/Enterprise
+  tiers with $0/TBD/custom pricing, per-minute rate limits and monthly request quotas. None of
+  that existed. See roadmap#35.
+api_access:
+  model: free-and-anonymous
+  metered: false
+  quota: null
+  signup_required: false
+  note: >-
+    Reads on https://elisa.tech/wp-json/ require no key, no account and no agreement — verified
+    live 2026-08-27 (GET /wp-json/tribe/events/v1/events returned 200 unauthenticated). Writes
+    require a WordPress account on elisa.tech, which is not offered as a developer product.
+    There is no paid API tier, no overage, and no usage-based charge of any kind.
+plans:
+  - id: elisa-associate
+    name: Associate Member
+    type: free
+    price: '0'
+    currency: USD
+    billing_period: annual
+    description: >-
+      For pre-approved non-profits, open source projects and government entities. Applications
+      must be approved before the sign-up form can be used.
+    conditions:
+      - Requires approval prior to joining
+      - Requires corporate membership of the Linux Foundation
+    elements:
+      - name: ELISA working group and SIG participation
+      - name: Technical Forum and community access
+  - id: elisa-general
+    name: General Member
+    type: paid
+    currency: USD
+    billing_period: annual
+    description: >-
+      Employee-count banded dues. Two published rate cards: one for applicants that are already
+      Linux Foundation members, one that bundles a new Linux Foundation Silver membership.
+    entries:
+      - label: 5,000 and above employees (already an LF member)
+        price: '20000'
+      - label: 2,000 – 4,999 employees (already an LF member)
+        price: '15000'
+      - label: 500 – 1,999 employees (already an LF member)
+        price: '10000'
+      - label: Less than 500 employees (already an LF member)
+        price: '5000'
+      - label: 5,000 and above employees (including new LF Silver membership)
+        price: '40000'
+      - label: 2,000 – 4,999 employees (including new LF Silver membership)
+        price: '30000'
+      - label: 500 – 1,999 employees (including new LF Silver membership)
+        price: '25000'
+      - label: 100 – 499 employees (including new LF Silver membership)
+        price: '15000'
+      - label: Less than 100 employees (including new LF Silver membership)
+        price: '10000'
+  - id: elisa-premier
+    name: Premier Member
+    type: paid
+    price: '90000'
+    currency: USD
+    billing_period: annual
+    description: >-
+      Top membership tier. Plus Linux Foundation membership if the applicant is not already a
+      Linux Foundation member.
+    elements:
+      - name: Governing Board representation
+notes:
+  - ELISA does not offer individual memberships.
+  - Formal application is required for every tier; ELISA membership also requires corporate membership of the Linux Foundation.
+  - Membership questions go to support@elisa.tech.
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Associate Member
+    access: free
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: General Member
+    access: paid
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premier Member
+    access: paid
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
